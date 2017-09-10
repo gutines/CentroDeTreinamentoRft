@@ -1,40 +1,47 @@
 package br.com.renanFightTeam.login;
 
+import java.util.Map;
+
 import javax.el.ELContext;
 import javax.el.ELResolver;
+import javax.faces.application.Application;
 import javax.faces.application.NavigationHandler;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+import javax.inject.Inject;
 
 public class Autorizador implements PhaseListener{
 	
 	private static final long serialVersionUID = 1L;
-
+		
 	public void afterPhase(PhaseEvent event) {
 
 		FacesContext context = event.getFacesContext();
 		
-		if ("/login.xhtml".equals(context.getViewRoot().getViewId())) {
+		if ("/index.xhtml".equals(context.getViewRoot().getViewId())) {
 			return;
-		}
+		}				
 		
-		ELContext elContext = context.getELContext();
-		ELResolver elResolver = context.getApplication().getELResolver();
-		UsuarioLogadoBean usuarioLogado = (UsuarioLogadoBean) elResolver.getValue(elContext, null, "usuarioLogadoBean");
+		UsuarioLogadoBean usuarioLogado = recuperarUsuarioLogado();
+		
+		if (usuarioLogado == null) {
 
-		// Usando o usuarioLogado que foi injetado
-		if (!usuarioLogado.isLogado()) {
-
-			NavigationHandler handler = context.getApplication()
-					.getNavigationHandler();
-			handler.handleNavigation(context, null, "login?faces-redirect=true");
+			NavigationHandler handler = context.getApplication().getNavigationHandler();
+			handler.handleNavigation(context, null, "/index?faces-redirect=true");
 			
 			//efetua renderizacao da tela
 			context.renderResponse();
 		}
 	}	
+	
+	private Object getBeanController(FacesContext context, String managedBean) { //string é o nome registrado no faces-config.xml
+        return context.getELContext().getELResolver().getValue(context.getELContext(), null, managedBean);
+	}
 
 	@Override
 	public void beforePhase(PhaseEvent event) {
@@ -45,6 +52,11 @@ public class Autorizador implements PhaseListener{
 		return PhaseId.RESTORE_VIEW;
 	}
 	
-	
+	private UsuarioLogadoBean recuperarUsuarioLogado(){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();	
+		return (UsuarioLogadoBean) sessionMap.get("UsuarioLogadoBean");		
+		 
+	}
 
 }

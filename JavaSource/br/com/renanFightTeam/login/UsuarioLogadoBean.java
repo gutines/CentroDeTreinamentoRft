@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 import br.com.renanFightTeam.model.Usuario;
+
 
 @ManagedBean
 @SessionScoped
@@ -16,7 +16,7 @@ public class UsuarioLogadoBean implements Serializable {
 	private Usuario usuario = new Usuario();
 
 	public void logar(Usuario usuario) {
-		this.usuario = usuario;
+		this.usuario = usuario;	
 	}
 
 	public void deslogar() {
@@ -28,6 +28,11 @@ public class UsuarioLogadoBean implements Serializable {
 	}
 
 	public boolean isLogado() {
-		return usuario != null;
+		if(usuario != null){
+			return true;
+		}
+		return false;
+		
 	}
+
 }

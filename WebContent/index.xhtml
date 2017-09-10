@@ -2,25 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Renan Fight Team!</title>
-	<link rel="stylesheet" type="text/css" href="./resources/css/reset.css"/>
-	<link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="./resources/css/renanfightteam.css"/>
-	
+	<link rel="stylesheet" type="text/css" href="./resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="./resources/css/renanfightteam.css" />
+
 </h:head>
 
 <h:body>
-
+				
 	<div id="index_page">
+		<h:form class="form-horizontal login-form">
+			<div class="form-group">
+				<label for="inputUser" class="col-sm-2 control-label">Usuário:</label>
+				<div class="col-sm-10">
+					<h:inputText type="text" styleClass="form-control" id="inputUser"
+						value="#{loginBean.usuario.user}" />
+				</div>
+			</div>
 
-		<div >
-			<ui:insert>
-				<ui:include src="/resources/pages/login/loginform.xhtml" />
-			</ui:insert>
-		</div>
-		
+			<div class="form-group">
+				<label for="inputPassword" class="col-sm-2 control-label">Senha:</label>
+				<div class="col-sm-10">
+					<h:inputSecret type="text" styleClass="form-control"
+						id="inputPassword" placeholder="Senha"
+						value="#{loginBean.usuario.password}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<div class="checkbox">
+						<label> <input type="checkbox" /> Remember me
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton class="btn btn-default"
+						action="#{loginBean.efetuaLogin()}" value="Logar" />
+				</div>
+			</div>
+		</h:form>
 	</div>
 
 </h:body>
