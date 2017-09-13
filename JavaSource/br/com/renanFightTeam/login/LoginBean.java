@@ -1,4 +1,4 @@
-package br.com.renanFightTeam.bean;
+package br.com.renanFightTeam.login;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -6,14 +6,10 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 import br.com.renanFightTeam.dao.UsuarioDao;
-import br.com.renanFightTeam.login.UsuarioLogadoBean;
 import br.com.renanFightTeam.model.Usuario;
 
 
@@ -56,7 +52,7 @@ public class LoginBean implements Serializable{
 		if(userFound!= null && isSamePassword(userFound)){
 			usuarioLogadoBean.logar(userFound);
 			gravarBean();
-			return "resources/menu?faces-redirect=true";
+			return "resources/home?faces-redirect=true";
 		}
 		
 		criaMensagem("Usuario não encontrado!");
@@ -66,7 +62,7 @@ public class LoginBean implements Serializable{
 	
 	private void gravarBean(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
-		Map sessionMap = ctx.getExternalContext().getSessionMap();
+		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();
 		
 		sessionMap.put("UsuarioLogadoBean", usuarioLogadoBean);
 	}

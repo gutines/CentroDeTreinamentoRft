@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class MenuBean implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 9178218097400714533L;
 	private Integer index=0;
 	
 	public Integer getIndex() {
@@ -21,14 +21,9 @@ public class MenuBean implements Serializable{
 		this.index = index;
 	}
 	
-	public String paginaMenu() {
+	public String paginaHome() {
 		this.index = 0;
-		return "resources/menu?faces-redirect=true";
-	}
-	
-	public String paginaAutores() {
-		this.index = 1;
-		return "autores?faces-redirect=true";
+		return "resources/home?faces-redirect=true";
 	}
 
 	public String paginaLogin() {

@@ -2,18 +2,11 @@ package br.com.renanFightTeam.login;
 
 import java.util.Map;
 
-import javax.el.ELContext;
-import javax.el.ELResolver;
-import javax.faces.application.Application;
 import javax.faces.application.NavigationHandler;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.inject.Inject;
 
 public class Autorizador implements PhaseListener{
 	
@@ -39,10 +32,6 @@ public class Autorizador implements PhaseListener{
 		}
 	}	
 	
-	private Object getBeanController(FacesContext context, String managedBean) { //string é o nome registrado no faces-config.xml
-        return context.getELContext().getELResolver().getValue(context.getELContext(), null, managedBean);
-	}
-
 	@Override
 	public void beforePhase(PhaseEvent event) {
 	}

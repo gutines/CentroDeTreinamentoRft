@@ -9,27 +9,35 @@
 
 <h:head>
 	<title>Renan Fight Team!</title>
-	<link rel="stylesheet" type="text/css" href="./resources/css/reset.css" />
-	<link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="./resources/css/renanfightteam.css" />
-	
+	<link rel="stylesheet" type="text/css" href="../resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/renanfightteam.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Diplomata+SC|Frijole"/>
 </h:head>
 
 <h:body>
 
-	<p:growl id="mensagens" autoUpdate="true" />
+	
+	<h:form id="menu">
 
-    	<h:form id="menu" rendered="#{usuarioLogadoBean.usuario != null}">
-		<p:tabMenu activeIndex="#{menuBean.index}">
-			<p:menuitem value="Livros" action="#{menuBean.paginaMenu()}" />
-			<p:menuitem value="Autores" action="#{menuBean.paginaAutores}" />
-			<p:menuitem value="Logout" action="#{loginBean.efetuaLogout}" />
-		</p:tabMenu>
+		<p:growl id="mensagens" autoUpdate="true" />
+		
+		<h1 class="titulo">Renan Fight Team</h1>
+		
+		<p:menubar >
+	        <p:submenu label="Sistema" icon="ui-icon-document">
+	            <p:submenu label="Plano" icon="ui-icon-contact">
+	                <p:menuitem value="Incluir" url="#" />
+	                <p:menuitem value="Consultar" url="#" />
+	                <p:menuitem value="Alterar" url="#" />
+	                <p:menuitem value="Excluir" url="#" />
+	            </p:submenu>
+	            <p:menuitem value="Open" url="#" />
+	            <p:separator />
+	            <p:menuitem value="Quit" url="#" />
+	        </p:submenu>		
+		</p:menubar>
 	</h:form>
-
-	<br />
-
-	<ui:insert name="corpo"/>
-
+	<ui:insert name="corpo" />
 </h:body>
 </html>
