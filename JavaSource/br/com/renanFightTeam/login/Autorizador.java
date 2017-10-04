@@ -2,6 +2,7 @@ package br.com.renanFightTeam.login;
 
 import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
@@ -23,12 +24,12 @@ public class Autorizador implements PhaseListener{
 		UsuarioLogadoBean usuarioLogado = recuperarUsuarioLogado();
 		
 		if (usuarioLogado == null) {
-
+						
 			NavigationHandler handler = context.getApplication().getNavigationHandler();
 			handler.handleNavigation(context, null, "/index?faces-redirect=true");
 			
 			//efetua renderizacao da tela
-			context.renderResponse();
+			context.renderResponse();			
 		}
 	}	
 	
@@ -47,5 +48,10 @@ public class Autorizador implements PhaseListener{
 		return (UsuarioLogadoBean) sessionMap.get("UsuarioLogadoBean");		
 		 
 	}
+	
+	private void criaMensagem(String mensagem) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, ""));
+	}
+	
 
 }

@@ -8,6 +8,11 @@ public class Usuario {
 	private String user;
 	private String password;
 	
+	public Usuario(){
+		setUser("Augusto");
+		setPassword("123456");
+	}
+	
 	/**
 	 * @return the user
 	 */

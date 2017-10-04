@@ -3,16 +3,7 @@
 .login-form{
     margin-top: 10%;
     margin-left: 30%;
-    margin-right: 30%;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding-top: 3%;
-    padding-right: 3%;
-    padding-left: 1%;
-    padding-bottom: 2%;
-    border-radius: 15px;
+    margin-right: 30%;   
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
 
@@ -22,11 +13,16 @@
 	font-family: 'Frijole', cursive; 
 }
 
+.corpo{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
 .titulo{
     text-align: center;
     font-family: 'Frijole', cursive;
     color: white;
-    background-color: black;
+    background-color: #af0f0f;
     margin-top: 0%;
     margin-bottom: 0%;
     padding-bottom: 1%;
@@ -34,5 +30,87 @@
 }
 
 .menu-item-rft{
-	color: black;
+	background: black;
 }
+
+.menu-item-rft span{
+	color: white;
+}
+
+.menu-item-rft li{
+	background: black;
+}
+
+.ui-menu, .ui-menu .ui-menu-child{
+	background: black;
+	color: white;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+	background: #af0f0f;
+}
+
+
+.plano-form{
+	margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1%;        
+}
+
+.filtro-form{
+	margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+    
+}
+
+.subtitulo{
+	text-align: center;
+	font-family: 'Kreon', serif;
+}
+
+.borda-padrao{
+	border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding-top: 1%;
+    padding-right: 3%;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    border-radius: 15px;
+}
+
+.botao-rodape{
+/* 	margin-left: 68%; */
+}
+
+.espaco-botao{
+	margin-left: 1%;
+}
+
+.campo-pesquisa{
+	width: inherit;
+}
+
+.botao-buscar{
+	margin-top: 1%;
+}
+
+.comp-center{
+	text-align: center;	
+}
+
+.icones{
+	padding-bottom: 0px;
+    padding-left: 3px;
+    padding-right: 6px;
+}
+
+
+
+
+
+
+
+

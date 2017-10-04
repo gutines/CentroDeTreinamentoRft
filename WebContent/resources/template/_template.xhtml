@@ -9,35 +9,51 @@
 
 <h:head>
 	<title>Renan Fight Team!</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/reset.css" />
-	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="../resources/css/renanfightteam.css" />
+	<link rel="stylesheet" type="text/css" href="/../CentroDeTreinamentoRft/resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/../CentroDeTreinamentoRft/resources/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/../CentroDeTreinamentoRft/resources/css/renanfightteam.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Diplomata+SC|Frijole"/>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kreon"/>
 </h:head>
 
 <h:body>
-
 	
-	<h:form id="menu">
-
+	<h:form prependId="false" id="form-menu">
+	
 		<p:growl id="mensagens" autoUpdate="true" />
 		
 		<h1 class="titulo">Renan Fight Team</h1>
-		
-		<p:menubar >
+				
+		<p:menubar styleClass="menu-item-rft">
 	        <p:submenu label="Sistema" icon="ui-icon-document">
+	        
+
 	            <p:submenu label="Plano" icon="ui-icon-contact">
-	                <p:menuitem value="Incluir" url="#" />
-	                <p:menuitem value="Consultar" url="#" />
-	                <p:menuitem value="Alterar" url="#" />
-	                <p:menuitem value="Excluir" url="#" />
+	                <p:menuitem value="Incluir" icon="ui-icon-plus" action="#{menuBean.paginaPlanoIncluir()}" ajax="false" update="@all" />
+	                <p:menuitem value="Buscar" icon="ui-icon-search" action="#{menuBean.paginaPlanoFiltro()}" ajax="false" update="@all" />
 	            </p:submenu>
+	            
+	            <p:submenu label="Modalidade" icon="ui-icon-tag">
+	                <p:menuitem value="Incluir" icon="ui-icon-plus" action="#{menuBean.paginaPlanoIncluir()}" ajax="false" update="@all" />
+	                <p:menuitem value="Buscar" icon="ui-icon-search" action="#{menuBean.paginaPlanoFiltro()}" ajax="false" update="@all" />
+	            </p:submenu>
+	    
 	            <p:menuitem value="Open" url="#" />
 	            <p:separator />
 	            <p:menuitem value="Quit" url="#" />
-	        </p:submenu>		
+	        </p:submenu>
+	        
+	        <p:submenu label="Alunos" icon="ui-icon-document">
+	        
+	        </p:submenu>
+	        <p:menuitem value="Logoff" action="#{loginBean.efetuaLogout()}" ajax="false" process="@all" update="@all"/>
+	        
+	        		
 		</p:menubar>
 	</h:form>
-	<ui:insert name="corpo" />
+	<h:form prependId="false" id="form-corpo" styleClass="corpo">
+		<ui:insert name="corpo" />
+		
+	</h:form>
 </h:body>
 </html>

@@ -12,25 +12,23 @@ import javax.faces.context.FacesContext;
 import br.com.renanFightTeam.dao.UsuarioDao;
 import br.com.renanFightTeam.model.Usuario;
 
-
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable{
 
 	private static final long serialVersionUID = 3431061882896193043L;
 	
-	private Usuario usuario = new Usuario();
-		
-	private UsuarioDao dao = new UsuarioDao();
-	
+	private Usuario usuario = new Usuario();		
+	private UsuarioDao dao = new UsuarioDao();	
 
-	UsuarioLogadoBean usuarioLogadoBean;
+	private UsuarioLogadoBean usuarioLogadoBean;
 	
 	private String mensagem;
-
+	
 	@PostConstruct
 	public void init(){
 		usuarioLogadoBean = new UsuarioLogadoBean();
+		
 	}
 	
 	/**
@@ -70,7 +68,7 @@ public class LoginBean implements Serializable{
 
 	public String efetuaLogout() {
 		this.usuarioLogadoBean.deslogar();
-		return "";
+		return "/index?faces-redirect=true";
 	}
 
 	

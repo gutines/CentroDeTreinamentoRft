@@ -1,9 +1,12 @@
 package br.com.renanFightTeam.login;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import br.com.renanFightTeam.model.Usuario;
 
 
@@ -20,7 +23,8 @@ public class UsuarioLogadoBean implements Serializable {
 	}
 
 	public void deslogar() {
-		this.usuario = null;
+		liberarUsuarioLogado();
+		this.usuario = new Usuario();
 	}
 	
 	public Usuario getUsuario() {
@@ -33,6 +37,12 @@ public class UsuarioLogadoBean implements Serializable {
 		}
 		return false;
 		
+	}
+	
+	private void liberarUsuarioLogado(){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();	
+		sessionMap.put("UsuarioLogadoBean", null);	
 	}
 
 }

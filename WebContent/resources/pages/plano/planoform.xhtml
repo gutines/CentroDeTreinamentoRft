@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+		<h:outputScript library="js" name="validarPlano.js"/>
+		<h:outputScript library="js" name="bootstrap.min.js"/>
+
+		<div class="form-group">
+			<label for="in-codigo-plano">Código</label> 
+			<h:inputText styleClass="form-control is-valid" id="in-codigo-plano" value="#{planoBean.plano.codigoPlano}" 
+						 required="true" requiredMessage="Informar Código do Plano!" disabled="#{planoBean.propriedadesPlano.desabilitarId}"/>
+		</div>	 
+		
+		<div class="form-group">
+			<label for="in-nome-plano">Nome</label> 
+			<h:inputText styleClass="form-control is-valid" id="in-nome-plano" value="#{planoBean.plano.nomePlano}"  
+			             required="true" requiredMessage="Informar Nome do Plano!" disabled="#{planoBean.propriedadesPlano.desabilitarNome}"/>
+		</div>
+				
+		<div class="form-group">
+			<label for="in-valor-mensal-plano">Valor Mensal</label> 
+			<h:inputText styleClass="form-control is-invalid" id="in-valor-mensal-plano" value="#{planoBean.plano.valorMensalPlano}"  
+			             required="true" requiredMessage="Informar Valor Mensal do Plano!" disabled="#{planoBean.propriedadesPlano.desabilitarValorMensal}"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="in-qtd-meses-plano">Quantidade de Meses</label> 
+			<h:inputText styleClass="form-control is-invalid" id="in-qtd-meses-plano" value="#{planoBean.plano.quantidadeMesesPlano}"
+			             required="true" requiredMessage="Informar a Quantidade de Meses do Plano!" disabled="#{planoBean.propriedadesPlano.desabilitarQuantidadeMeses}"/>
+				
+		</div>
+		
+		<div class="form-group">
+			<label for="cbx-status-plano">Status</label> 
+			<br />
+			<h:selectOneMenu id="cbx-status-plano" value="#{planoBean.plano.statusPlano}" 
+							 label="Status" styleClass="form-control" converter="statusConverter"
+							 requiredMessage="Informar o Status do Plano!" required="true" disabled="#{planoBean.propriedadesPlano.desabilitarStatus}">
+				<f:selectItems value="#{planoBean.status.statusLista}" var="status" itemValue="#{status}" itemLabel="#{status.status}"/>
+			</h:selectOneMenu>
+													
+		</div>
+		
+	</ui:composition>
+
+</h:body>
+
+</html>

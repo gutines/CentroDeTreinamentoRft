@@ -23,11 +23,36 @@ public class MenuBean implements Serializable{
 	
 	public String paginaHome() {
 		this.index = 0;
-		return "resources/home?faces-redirect=true";
+		return "/resources/home?faces-redirect=true";
+	}
+	
+	public String paginaPlanoIncluir(){
+		this.index = 0;
+		return "/resources/pages/plano/planoincluir?faces-redirect=true";
+	}
+	
+	public String paginaPlanoConsultar(){
+		this.index = 0;
+		return "/resources/pages/plano/planoconsultar?faces-redirect=true";
+	}
+	
+	public String paginaPlanoAlterar(){
+		this.index = 0;
+		return "/resources/pages/plano/planoalterar?faces-redirect=true";
+	}
+	
+	public String paginaPlanoExcluir(){
+		this.index = 0;
+		return "/resources/pages/plano/planoexcluir?faces-redirect=true";
+	}
+	
+	public String paginaPlanoFiltro(){
+		this.index = 0;
+		return "/resources/pages/plano/planofiltroform?faces-redirect=true";
 	}
 
 	public String paginaLogin() {
 		this.index = 0;
-		return "login?faces-redirect=true";
+		return "/index?faces-redirect=true";
 	}
 }
