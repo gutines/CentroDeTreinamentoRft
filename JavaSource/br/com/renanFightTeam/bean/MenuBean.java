@@ -50,7 +50,37 @@ public class MenuBean implements Serializable{
 		this.index = 0;
 		return "/resources/pages/plano/planofiltroform?faces-redirect=true";
 	}
-
+	
+	/*
+	 * MODALIDADE
+	 */
+	
+	public String paginaModalidadeIncluir(){
+		this.index = 0;
+		return "/resources/pages/modalidade/modalidadeincluir?faces-redirect=true";
+	}
+	
+	public String paginaModalidadeConsultar(){
+		this.index = 0;
+		return "/resources/pages/modalidade/modalidadeconsultar?faces-redirect=true";
+	}
+	
+	public String paginaModalidadeAlterar(){
+		this.index = 0;
+		return "/resources/pages/modalidade/modalidadealterar?faces-redirect=true";
+	}
+	
+	public String paginaModalidadeExcluir(){
+		this.index = 0;
+		return "/resources/pages/modalidade/modalidadeexcluir?faces-redirect=true";
+	}
+	
+	public String paginaModalidadeFiltro(){
+		this.index = 0;
+		return "/resources/pages/modalidade/modalidadefiltroform?faces-redirect=true";
+	}
+	
+	 
 	public String paginaLogin() {
 		this.index = 0;
 		return "/index?faces-redirect=true";

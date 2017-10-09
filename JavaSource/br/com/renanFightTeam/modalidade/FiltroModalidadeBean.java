@@ -1,4 +1,4 @@
-package br.com.renanFightTeam.plano;
+package br.com.renanFightTeam.modalidade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,16 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.renanFightTeam.bean.MenuBean;
-import br.com.renanFightTeam.dao.PlanoDao;
-import br.com.renanFightTeam.model.Plano;
+import br.com.renanFightTeam.dao.ModalidadeDao;
+import br.com.renanFightTeam.model.Modalidade;
+import br.com.renanFightTeam.plano.MensagemPlanoEnum;
 import br.com.renanFightTeam.util.PaginasEnum;
 
 @ManagedBean
 @ViewScoped
-public class FiltroPlanoBean {
-	
-	private List<Plano> planos = new ArrayList<Plano>();
+public class FiltroModalidadeBean {
+
+	private List<Modalidade> modalidades = new ArrayList<Modalidade>();
 	
 	private int tipoPesquisa;
 	private int codigo;
@@ -31,73 +32,47 @@ public class FiltroPlanoBean {
 	/**
 	 * 
 	 */
-	@PostConstruct	
+	@PostConstruct
 	public void init(){
 		
 	}
 	
-	/**
-	 * 
-	 */
-	public void listarPlanoPorCodigo(){
-		this.planos = new PlanoDao().buscaPorCodigo(codigo);
-		
+	public void listarModalidadePorCodigo(){
+		this.modalidades = new ModalidadeDao().buscaPorCodigo(codigo);
 		tratarResultadoPesquisa();
 	}
 	
-	/**
-	 * 
-	 */
-	public void listarPlanoPorNome(){
-		this.planos = new PlanoDao().buscarPorNome(nome);
-		
+	public void listarModalidadePorNome(){
+		this.modalidades = new ModalidadeDao().buscarPorNome(nome);
 		tratarResultadoPesquisa();
 	}
 	
-	/**
-	 * Listar por Status
-	 */
-	public void listarPlanoPorStatus(){
-		this.planos = new PlanoDao().buscarPorStatus(status);
-		
+	public void listarModalidadePorStatus(){
+		this.modalidades = new ModalidadeDao().buscarPorStatus(status);
 		tratarResultadoPesquisa();
-	}	
-	
-	/**
-	 * 
-	 * @param plano
-	 * @return String
-	 */
-	public String tratarConsulta(Plano plano){
-		gravarPlano(plano);
-		gravarOpcao(PaginasEnum.PLANOCONSULTAR.getPagina());
-		
-		return new MenuBean().paginaPlanoConsultar();
 	}
 	
-	/**
-	 * 
-	 * @param plano
-	 * @return
-	 */
-	public String tratarAlteracao(Plano plano){
-		gravarPlano(plano);
-		gravarOpcao(PaginasEnum.PLANOALTERAR.getPagina());
+	public String tratarConsulta(Modalidade modalidade){
+		gravarModalidade(modalidade);
+		gravarOpcao(PaginasEnum.MODALIDADECONSULTAR.getPagina());
 		
-		return new MenuBean().paginaPlanoAlterar();
+		return new MenuBean().paginaModalidadeConsultar();
 	}
 	
-	/**
-	 * 
-	 * @param plano
-	 * @return
-	 */
-	public String tratarExclusao(Plano plano){
-		gravarPlano(plano);
-		gravarOpcao(PaginasEnum.PLANOEXCLUIR.getPagina());
+	public String tratarAlteracao(Modalidade modalidade){
+		gravarModalidade(modalidade);
+		gravarOpcao(PaginasEnum.MODALIDADEALTERAR.getPagina());
 		
-		return new MenuBean().paginaPlanoExcluir();
+		return new MenuBean().paginaModalidadeAlterar();
 	}
+	
+	public String tratarExclusao(Modalidade modalidade){
+		gravarModalidade(modalidade);
+		gravarOpcao(PaginasEnum.MODALIDADEEXCLUIR.getPagina());
+		
+		return new MenuBean().paginaModalidadeExcluir();
+	}
+	
 	
 	/**
 	 * 
@@ -107,25 +82,25 @@ public class FiltroPlanoBean {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();
 			
-		sessionMap.put("opcaoFiltroPlano", opcao);
+		sessionMap.put("opcaoFiltroModalidade", opcao);
 	}
 	
 	/**
 	 * 
 	 * @param plano
 	 */
-	private void gravarPlano(Plano plano){		
+	private void gravarModalidade(Modalidade modalidade){		
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();
 			
-		sessionMap.put("plano", plano);
+		sessionMap.put("modalidade", modalidade);
 	}	
 	
 	/**
 	 * 
 	 */
 	private void tratarResultadoPesquisa(){
-		if(planos.isEmpty()){
+		if(modalidades.isEmpty()){
 			criarMensagem(MensagemPlanoEnum.RESULTADO_NAO_ENCONTRADO.getSeveridade(), MensagemPlanoEnum.RESULTADO_NAO_ENCONTRADO.getResumo(), MensagemPlanoEnum.RESULTADO_NAO_ENCONTRADO.getDescricao());			
 		}
 	}
@@ -141,76 +116,66 @@ public class FiltroPlanoBean {
 	}
 	
 	/**
+	 * @return the modalidades
+	 */
+	public List<Modalidade> getModalidades() {
+		return modalidades;
+	}
+	/**
+	 * @param modalidades the modalidades to set
+	 */
+	public void setModalidades(List<Modalidade> modalidades) {
+		this.modalidades = modalidades;
+	}
+	/**
 	 * @return the tipoPesquisa
 	 */
 	public int getTipoPesquisa() {
 		return tipoPesquisa;
 	}
-
 	/**
 	 * @param tipoPesquisa the tipoPesquisa to set
 	 */
 	public void setTipoPesquisa(int tipoPesquisa) {
 		this.tipoPesquisa = tipoPesquisa;
 	}
-
 	/**
 	 * @return the codigo
 	 */
 	public int getCodigo() {
 		return codigo;
 	}
-
 	/**
 	 * @param codigo the codigo to set
 	 */
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-
 	/**
 	 * @return the nome
 	 */
 	public String getNome() {
 		return nome;
 	}
-
 	/**
 	 * @param nome the nome to set
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	/**
 	 * @return the status
 	 */
 	public String getStatus() {
 		return status;
 	}
-
 	/**
 	 * @param status the status to set
 	 */
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	/**
-	 * @return the planos
-	 */
-	public List<Plano> getPlanos() {
-		return planos;
-	}
-
-	/**
-	 * @param planos the planos to set
-	 */
-	public void setPlanos(List<Plano> planos) {
-		this.planos = planos;
-	}
-
-
-
-
+	}	
+	
+	
+	
 }

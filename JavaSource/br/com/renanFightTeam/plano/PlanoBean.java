@@ -4,17 +4,13 @@ import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.renanFightTeam.bean.MenuBean;
 import br.com.renanFightTeam.dao.PlanoDao;
-import br.com.renanFightTeam.login.UsuarioLogadoBean;
 import br.com.renanFightTeam.model.Plano;
 import br.com.renanFightTeam.util.PaginasEnum;
 import br.com.renanFightTeam.util.StatusUtil;
@@ -29,13 +25,18 @@ public class PlanoBean implements Serializable{
 	private StatusUtil status;	
 	private PropriedadesPlano propriedadesPlano;	
 		
+	/**
+	 * 
+	 */
 	@PostConstruct
 	public void init(){
-		status = new StatusUtil();		
-		
+		status = new StatusUtil();	
 		tratarCargaInicialPagina();
 	}
 		
+	/**
+	 * 
+	 */
 	private void tratarCargaInicialPagina() {
 		
 		if(FacesContext.getCurrentInstance().getViewRoot().getViewId().endsWith(PaginasEnum.PLANOINCLUIR.getPagina())){
@@ -56,60 +57,97 @@ public class PlanoBean implements Serializable{
 		
 	}	
 
+	/**
+	 * 
+	 */
 	private void carregarInclusao() {
 		limpaTela();
 		setPropriedadesPlano(new ValidarChamadaPlano().validaDesabilitarCampos(PaginasEnum.PLANOINCLUIR.getPagina()));
 		plano.setCodigoPlano(new PlanoDao().obterProximoCodigoPlano());
 	}
 	
+	/**
+	 * 
+	 */
 	private void carregarConsulta() {
 		limpaTela();
 		setPropriedadesPlano(new ValidarChamadaPlano().validaDesabilitarCampos(PaginasEnum.PLANOCONSULTAR.getPagina()));
 	}
 	
+	/**
+	 * 
+	 */
 	private void carregarAlteracao(){
 		limpaTela();
 		setPropriedadesPlano(new ValidarChamadaPlano().validaDesabilitarCampos(PaginasEnum.PLANOALTERAR.getPagina()));
 	}
 	
+	/**
+	 * 
+	 */
 	private void carregarExcluir(){
 		limpaTela();
 		setPropriedadesPlano(new ValidarChamadaPlano().validaDesabilitarCampos(PaginasEnum.PLANOEXCLUIR.getPagina()));
 	}
-		
+	
+	/**
+	 * 
+	 */
 	private void limpaTela(){
 		plano = new Plano();
 		propriedadesPlano = new PropriedadesPlano();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private String carregarOpcao(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();	
 		return (String) sessionMap.get("opcaoFiltroPlano");	
 	}
 	
+	/**
+	 * 
+	 */
 	private void carregarPlano(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		Map<String, Object> sessionMap = ctx.getExternalContext().getSessionMap();	
 		this.plano = (Plano) sessionMap.get("plano");	
 	}
 		
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String incluirPlano() {				
 		criaMensagem("Plano " + plano.getNomePlano() + " incluido com sucesso!");		
 		return retornarHome();		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String alterarPlano(){		
 		criaMensagem("Plano " + plano.getNomePlano() + " alterado com sucesso!");		
 		return retornarHome();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String excluirPlano(){
 		criaMensagem("Plano " + plano.getNomePlano() + " excluido com sucesso!");		
 		return retornarHome();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private String retornarHome(){		
 		return new MenuBean().paginaHome();
 	}
@@ -156,6 +194,10 @@ public class PlanoBean implements Serializable{
 		this.propriedadesPlano = propriedadesPlano;
 	}
 
+	/**
+	 * 
+	 * @param mensagem
+	 */
 	private void criaMensagem(String mensagem) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, ""));		
 		System.out.println(mensagem);

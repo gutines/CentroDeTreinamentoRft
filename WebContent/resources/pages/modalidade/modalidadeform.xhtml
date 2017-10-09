@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+		<h:outputScript library="js" name="validarModalidade.js"/>
+		<h:outputScript library="js" name="bootstrap.min.js"/>
+
+		<div class="form-group">
+			<label for="in-codigo-modalidade">Código</label> 
+			<h:inputText styleClass="form-control is-valid" id="in-codigo-modalidade" value="#{modalidadeBean.modalidade.codigoModalidade}" 
+						 required="true" requiredMessage="Informar Código da Modalidade!" disabled="#{modalidadeBean.propriedadesModalidade.desabilitarId}"/>
+		</div>	 
+		
+		<div class="form-group">
+			<label for="in-nome-modalidade">Nome</label> 
+			<h:inputText styleClass="form-control is-valid" id="in-nome-modalidade" value="#{modalidadeBean.modalidade.nomeModalidade}"  
+			             required="true" requiredMessage="Informar Nome da Modalidade!" disabled="#{modalidadeBean.propriedadesModalidade.desabilitarNome}"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="cbx-status-modalidade">Status</label> 
+			<br />
+			<h:selectOneMenu id="cbx-status-modalidade" value="#{modalidadeBean.modalidade.statusModalidade}" 
+							 label="Status" styleClass="form-control" converter="statusConverter"
+							 requiredMessage="Informar o Status da Modalidade!" required="true" disabled="#{modalidadeBean.propriedadesModalidade.desabilitarStatus}">
+				<f:selectItems value="#{modalidadeBean.status.statusLista}" var="modalidade" itemValue="#{modalidade}" itemLabel="#{modalidade.status}"/>
+			</h:selectOneMenu>
+													
+		</div>
+		
+	</ui:composition>
+
+</h:body>
+
+</html>
