@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+		<nav aria-label="breadcrumb" role="navigation">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-curent="page">Dados Pessoais</li>
+				<li class="breadcrumb-item active" aria-curent="page">Endereço</li>
+				<li class="breadcrumb-item active" aria-curent="page">Contato</li>
+			</ol>
+		</nav>
+				
+		<!-- Contatos do aluno -->
+		<div>
+		
+			<!-- Telefone -->
+			<div class="form-group ">
+					<label for="in-telefone">Telefone</label> 
+					<h:inputText id="in-telefone" styleClass="form-control is-valid" value="#{alunoBean.aluno.telefone}" 
+								 required="true" requiredMessage="Informar o telefone!"  style="width:300px;" maxlength="11"/>
+					<small id="telefoneHelp" class="form-text text-muted">Digite o telefone com dígito ex: (11)91234-1234.</small>								 
+			</div>
+			
+			
+			<!-- Telefone para casos de emêrgencias -->
+			<div class="form-group ">
+					<label for="in-telefoneEmergencia">Telefone de Emergência</label> 
+					<h:inputText id="in-telefoneEmergencia" styleClass="form-control is-valid" value="#{alunoBean.aluno.telefoneDeEmergencia}" 
+								 required="true" requiredMessage="Informar o telefone do contato de emergência!"  style="width:300px;" maxlength="11"/>
+					<small id="telefoneEmgHelp" class="form-text text-muted">Digite o telefone com dígito ex: (11)91234-1234.</small>			 
+			</div>
+			
+			<!-- Nome do contato de emergência-->
+			<div class="form-group ">
+					<label for="in-contatoDeEmergencia">Nome do Contato</label> 
+					<h:inputText id="in-contatoDeEmergencia" styleClass="form-control is-valid" value="#{alunoBean.aluno.contatoDeEmergencia}" 
+								 required="true" requiredMessage="Informar o nome do contato para emergência!"  style="width:300px;"/>
+			</div>
+			
+			<!-- Email -->
+			<div class="form-group ">
+					<label for="in-email">Email</label> 
+					<h:inputText id="in-email" styleClass="form-control is-valid" value="#{alunoBean.aluno.email}" 
+								 required="true" requiredMessage="Informar o email!"  style="width:300px;">
+						
+						<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
+					</h:inputText>
+			</div>
+			
+			<div class="botao-rodape">	
+				<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true" styleClass="btn btn-default"/>
+				<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-contato', 'div-endereco')}" value="Anterior" immediate="true" 
+							 styleClass="btn btn-default espaco-botao"/>			
+				<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-contato', 'div-matricula')}" value="Próximo" immediate="false" type="submit" 
+							 styleClass="btn btn-default espaco-botao"/>  
+			</div>
+		</div>
+		
+		
+	</ui:composition>
+
+</h:body>
+
+</html>

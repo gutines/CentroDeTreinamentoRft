@@ -1,0 +1,77 @@
+@CHARSET "ISO-8859-1";
+
+.area-foto{
+	background: black;
+	
+}
+
+.form-control{
+	width: 50px:
+}
+
+.foto-content{
+	height: 170px;
+	width: 170px;
+	border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.lista-check-box table{
+	margin-left: 3%;
+	width: 20%;
+}
+
+.label-cbx-modalidades label{
+	padding-left: 5%;
+    display: inline;
+    font-size: medium;
+    font-weight: normal; 
+}
+
+.form-inline{
+	margin-bottom: 3px;
+}
+
+.confirmar label{
+	font-size: larger;
+}
+
+.confirmar span{
+	display: inline;
+    font-size: medium;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.confirmar h4{
+	text-decoration: underline;
+}
+
+.mrg-left-3pc{
+	margin-left: 3%;
+}
+
+.borda-padrao{
+	padding-bottom: 30%;
+}
+
+.icone-pesquisa-cep{
+    height: 32px;
+    width: 45px;
+    margin-left: 3px;
+    margin-top: -3px;
+}
+
+.modalidade-dt table{
+	border-spacing: 0px; 
+	border-collapse: unset; 
+	padding-left: 2%;
+	
+}
+
+.modalidade-dt div{
+	overflow: auto;
+	height: 50px;
+}

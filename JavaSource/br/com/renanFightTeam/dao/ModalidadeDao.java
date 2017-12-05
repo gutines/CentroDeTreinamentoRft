@@ -18,7 +18,7 @@ public class ModalidadeDao {
 		modalidades.add(new Modalidade(3, "Boxe", new Status(1, "Ativo")));
 	}
 
-	public void incluirPlano(Plano plano){
+	public void incluirModalidades(Modalidade modalidade){
 		
 	}
 	
@@ -28,7 +28,7 @@ public class ModalidadeDao {
 	}
 	
 	
-	public ArrayList<Modalidade> listarPlano(){
+	public ArrayList<Modalidade> listarModalidade(){
 							
 		return (ArrayList<Modalidade>) modalidades;
 	}

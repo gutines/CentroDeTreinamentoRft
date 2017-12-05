@@ -40,6 +40,7 @@ public class Autorizador implements PhaseListener{
 	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.RESTORE_VIEW;
+		
 	}
 	
 	private UsuarioLogadoBean recuperarUsuarioLogado(){
@@ -48,10 +49,5 @@ public class Autorizador implements PhaseListener{
 		return (UsuarioLogadoBean) sessionMap.get("UsuarioLogadoBean");		
 		 
 	}
-	
-	private void criaMensagem(String mensagem) {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, ""));
-	}
-	
 
 }

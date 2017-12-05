@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 
 @ManagedBean
@@ -23,8 +24,17 @@ public class MenuBean implements Serializable{
 	
 	public String paginaHome() {
 		this.index = 0;
-		return "/resources/home?faces-redirect=true";
+		boolean flag = FacesContext.getCurrentInstance().getExternalContext().isResponseCommitted();
+		if(!flag){
+			return "/resources/home?faces-redirect=true";
+		}
+		return "";		
 	}
+	
+	
+	/*
+	 * PLANO
+	 */
 	
 	public String paginaPlanoIncluir(){
 		this.index = 0;
@@ -80,6 +90,14 @@ public class MenuBean implements Serializable{
 		return "/resources/pages/modalidade/modalidadefiltroform?faces-redirect=true";
 	}
 	
+	/*
+	 * ALUNO
+	 */
+	
+	public String paginaAlunoIncluir(){
+		this.index = 0;
+		return "/resources/pages/aluno/alunoincluir?faces-redirect=true";
+	}
 	 
 	public String paginaLogin() {
 		this.index = 0;

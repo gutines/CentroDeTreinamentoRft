@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+		<nav aria-label="breadcrumb" role="navigation">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-curent="page">Dados Pessoais</li>
+				<li class="breadcrumb-item active" aria-curent="page">Endereço</li>
+				<li class="breadcrumb-item active" aria-curent="page">Contato</li>
+				<li class="breadcrumb-item active" aria-curent="page">Matricula</li>
+				<li class="breadcrumb-item active" aria-curent="page">Confirmar</li>
+			</ol>
+		</nav>	
+	
+	<!-- Area de dados pessoais-->
+		<h4>Dados Pessoais</h4>
+		<div class="form-group" >						
+			<div class="aluno-content mrg-left-3pc">
+				
+				<!-- Nome do aluno -->
+				<div class="form-inline">
+					<label for="out-conf-nome">Nome:</label> 
+					<h:outputText id="out-conf-nome" value="#{alunoBean.aluno.nome}" />					
+				</div>
+				
+				<!-- Data de nascimento do aluno -->
+				<div class="form-inline">
+					<label for="out-conf-dt-nascimento" >Data de Nascimento:</label> 
+					<h:outputText id="out-conf-dt-nascimento" value="#{alunoBean.aluno.dataDeNascimento.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" dateStyle="medium" type="date"/>
+						
+					</h:outputText>
+					
+				</div>
+				
+				<!-- RG -->
+				<div class="form-inline">
+					<label for="out-conf-rg">RG: </label> 
+					<h:outputText id="out-conf-rg" value="#{alunoBean.aluno.rg}" />
+				</div>
+				
+				<!-- CPF -->
+				<div class="form-inline">
+					<label for="out-conf-cpf">CPF: </label> 
+					<h:outputText id="out-conf-cpf" value="#{alunoBean.aluno.cpf}" />
+				</div>
+				
+				<!-- Status do aluno-->
+				<div class="form-inline">
+					<label for="out-conf-status">Status</label> 
+					<h:outputText id="out-conf-status" value="#{alunoBean.aluno.statusAluno.status}" />											
+				</div>	
+				
+			</div>	
+				
+			<div id="div-foto-confirmar" class="foto" style="margin-right: -10px;margin-top: -35px;">
+				<!-- Area de apresentação da foto -->
+				<div id="div-foto-content-confirmar" >
+					<h:graphicImage value="/resources/imagens/IMG-20170704-WA0022.jpg" class="foto-content" />
+				</div>								
+			</div>
+				
+		</div>
+		
+		<p:separator/>
+		
+		<h4>Endereço</h4>
+		<!-- Area de Endereço-->
+		<div class="form-group mrg-left-3pc" >
+		
+			<!-- CEP -->
+			<div class="form-inline">
+				<label for="out-conf-cep">CEP: </label>
+				<h:outputText id="out-conf-cep" value="#{alunoBean.enderecoAluno.endereco.cep}" />							 
+			</div>
+			
+			<!-- Número -->
+			<div class="form-inline" >
+				<label for="out-conf-numero">Número: </label> 
+				<h:outputText id="out-conf-numero" value="#{alunoBean.enderecoAluno.endereco.numero}" />
+			</div>
+			
+			<!-- Complemento-->
+			<div class="form-inline" >
+				<label for="out-conf-complemento">Complemento: </label> 
+				<h:outputText id="out-conf-complemento" value="#{alunoBean.enderecoAluno.endereco.complemento}" />
+			</div>
+			
+			<!-- Endereço -->
+			<div class="form-inline">
+				<label for="out-conf-endereco">Endereço: </label> 
+				<h:outputText id="out-conf-endereco" value="#{alunoBean.enderecoAluno.endereco.endereco}" />
+			</div>
+			
+			<!-- Bairro -->
+			<div class="form-inline">
+				<label for="out-conf-bairro">Bairro: </label> 
+				<h:outputText id="out-conf-bairro" value="#{alunoBean.enderecoAluno.endereco.bairro}" />
+			</div>
+			
+			<!-- Cidade -->
+			<div class="form-inline">
+				<label for="out-conf-cidade">Cidade: </label> 
+				<h:outputText id="out-conf-cidade" value="#{alunoBean.enderecoAluno.endereco.cidade}" />
+			</div>
+			
+			<!-- Estado -->
+			<div class="form-inline">
+				<label for="out-conf-estado">Estado: </label>
+				<h:outputText id="out-conf-estado" value="#{alunoBean.enderecoAluno.endereco.estado}" />
+			</div>
+			
+		</div>
+		
+		<p:separator/>
+		
+		<h4>Contato</h4>
+<!-- 	Dados de Contato -->
+		<div class="mrg-left-3pc">	
+			<!-- Telefone -->
+			<div class="form-inline">
+				<label for="out-conf-telefone">Telefone: </label>
+				<h:outputText id="out-conf-telefone" value="#{alunoBean.aluno.telefone}" />
+			</div>	
+		
+			<!-- Telefone Emergência-->
+			<div class="form-inline">
+				<label for="out-conf-telefone-emergencia">Telefone de Emergência: </label>
+				<h:outputText id="out-conf-telefone-emergencia" value="#{alunoBean.aluno.telefoneDeEmergencia}" />
+			</div>
+			
+			<!-- Nome do Contato-->
+			<div class="form-inline">
+				<label for="out-conf-nome-contato">Nome do Contato: </label>
+				<h:outputText id="out-conf-nome-contato" value="#{alunoBean.aluno.contatoDeEmergencia}" />
+			</div>
+			
+			<!-- Email-->
+			<div class="form-inline">
+				<label for="out-conf-email">Email: </label>
+				<h:outputText id="out-conf-email" value="#{alunoBean.aluno.email}" />
+			</div>
+		</div>
+		
+		<p:separator/>
+
+		<h4>Dados de Matricula</h4>
+<!-- 	Dados de Matricula		 -->
+		<div class="mrg-left-3pc">
+			
+			<!-- Plano -->
+			<div class="form-inline">
+				<label for="out-conf-Plano ">Plano: </label>
+				<h:outputText id="out-conf-plano" value="#{alunoBean.planoContrato.planoSelecionado.nomePlano}" />
+			</div>
+			
+			<!-- Modalidades -->
+			<div class="form-inline">
+				<label for="out-conf-modalidades" style="float: left;">Modalidades: </label>
+				<div id="div-scrol-dtTable" class="modalidade-dt" style="overflow: auto; height: 50px">
+					<h:dataTable id="out-conf-modalidades" value="#{alunoBean.modalidadePraticada.modalidadesSelecionadas}" var="modalidades"
+								 style="border-spacing: 0px; border-collapse: unset; padding-left: 2%;">
+						<h:column  >
+							<h:outputText value="#{modalidades.nomeModalidade}" />
+						</h:column>
+									
+					</h:dataTable>
+				</div>	
+			</div>
+			
+			<!-- Atestado Médico-->
+			<div class="form-inline">
+				<label for="out-conf-atestado">Possui Atestado Médico: </label>
+				<h:outputText id="out-conf-atestado" value="#{alunoBean.conversaoBoolean()}"/>
+				
+
+			</div>
+		</div>
+		
+		<p:separator/>		
+		
+		<div class="botao-rodape">	
+			<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true" styleClass="btn btn-default"/>
+			
+			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-confirmar', 'div-matricula')}" value="Anterior" immediate="true" 
+							 styleClass="btn btn-default espaco-botao"/>	
+						
+			<h:commandButton action="#{menuBean.paginaHome()}" value="Confirmar" immediate="true" styleClass="btn btn-default espaco-botao"/>
+			
+		</div>
+				
+				
+		
+		
+	</ui:composition>
+
+</h:body>
+
+</html>

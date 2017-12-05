@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
 <f:view contentType="text/html" />
@@ -18,9 +18,9 @@
 
 <h:body>
 	
-	<h:form prependId="false" id="form-menu">
+	<h:form prependId="false" id="form-menu" onkeypress="return event.keyCode != 13">
 	
-		<p:growl id="mensagens" autoUpdate="true" />
+		<p:growl id="mensagens" autoUpdate="true"/>
 		
 		<h1 class="titulo">Renan Fight Team</h1>
 				
@@ -44,16 +44,16 @@
 	        </p:submenu>
 	        
 	        <p:submenu label="Alunos" icon="ui-icon-document">
-	        
+				<p:submenu label="Cadastro" icon="ui-icon-contact">
+					<p:menuitem value="Incluir" icon="ui-icon-plus" action="#{menuBean.paginaAlunoIncluir()}" ajax="false" update="@all" />
+	                <p:menuitem value="Buscar" icon="ui-icon-search" action="#{menuBean.paginaPlanoFiltro()}" ajax="false" update="@all" />
+				</p:submenu>		        
 	        </p:submenu>
 	        <p:menuitem value="Logoff" action="#{loginBean.efetuaLogout()}" ajax="false" process="@all" update="@all"/>
 	        
 	        		
 		</p:menubar>
 	</h:form>
-	<h:form prependId="false" id="form-corpo" styleClass="corpo">
-		<ui:insert name="corpo" />
-		
-	</h:form>
+		<ui:insert name="corpo" />		
 </h:body>
 </html>

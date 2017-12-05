@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+				
+		<!-- Area de dados pessoais-->
+		<nav aria-label="breadcrumb" role="navigation">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-curent="page">Dados Pessoais</li>
+			</ol>
+		</nav>
+			
+		<div class="form-group" >
+						
+			<div class="aluno-content">
+		
+				<!-- Nome do aluno -->
+				<div class="form-group ">
+					<label for="in-nome-aluno">Nome</label> 
+					<h:inputText id="in-nome-aluno" styleClass="form-control is-valid" value="#{alunoBean.aluno.nome}" 
+								 required="true" requiredMessage="Informar o nome do aluno!" style="width:300px;"
+								 onkeypress="return event.keyCode != 13"/>
+				</div>
+				
+				<!-- Data de nascimento do aluno -->
+				<div class="form-group">
+					<label for="in-data-de-nascimento-aluno">Data de Nascimento</label> 
+					<h:inputText id="in-data-de-nascimento-aluno" styleClass="form-control is-valid" value="#{alunoBean.aluno.dataDeNascimento.time}" style="width:100px;"
+								 onkeypress="if(event.keyCode == 13) return false;else mascaraData(this)" maxlength="10" requiredMessage="Informar Data de Nascimento do aluno!" >
+								 
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+					</h:inputText>
+				</div>
+				
+				<!-- RG -->
+				<div class="form-group ">
+						<label for="in-rg">RG</label> 
+						<h:inputText id="in-rg" styleClass="form-control is-valid" value="#{alunoBean.aluno.rg}" 
+									 required="true" requiredMessage="Informar o RG do aluno!" style="width:300px;" maxlength="9" onkeypress="return event.keyCode != 13"/>
+						<small id="rgHelp" class="form-text text-muted">Digite apenas números.</small>
+				</div>
+			
+				<!-- CPF -->
+				<div class="form-group ">
+						<label for="in-cpf">CPF</label> 
+						<h:inputText id="in-cpf" styleClass="form-control is-valid" value="#{alunoBean.aluno.cpf}" 
+									 required="true" requiredMessage="Informar o CPF do aluno!!" style="width:300px;" maxlength="11" onkeypress="return event.keyCode != 13"
+									 validator="#{alunoBean.validarCpf}"/>
+						<small id="cpfHelp" class="form-text text-muted">Digite apenas números.</small>
+				</div>
+				
+				<!-- Status do aluno-->
+				<div class="form-group">
+					<label for="cbx-status-aluno">Status</label> 
+					<br />
+					<h:selectOneMenu id="cbx-status-aluno" value="#{alunoBean.aluno.statusAluno}"  onkeypress="return event.keyCode != 13"
+									 label="Status" styleClass="form-control" converter="statusConverter"
+									 requiredMessage="Informar o Status do aluno!" required="true" style="width:100px;">
+						<f:selectItems value="#{alunoBean.status.statusLista}" var="aluno" itemValue="#{aluno}" itemLabel="#{aluno.status}"/>
+					</h:selectOneMenu>
+													
+				</div>				 
+			</div>			 
+			
+			<div id="div-foto" class="foto">
+				<!-- Area de apresentação da foto -->
+				<div id="div-foto-content" >
+					<h:graphicImage id="img-foto" value="/resources/imagens/IMG-20170704-WA0022.jpg" class="foto-content" />
+				</div>
+				
+				<!-- Area do botão de seleção da foto no sistema -->
+				
+					<div class="botao-rodape" style="margin-top: 5%">
+						
+							<h:inputFile value="#{alunoBean.fotoAluno.arquivo}"  validator="#{alunoBean.fotoAluno.valida}" immediate="false" size="20"/>
+												
+							<h:commandButton id="btn-importar" action="#{alunoBean.fotoAluno.importarArquivo}" value="Importar">
+								<f:ajax execute="btn-importar" render="@form"></f:ajax>
+							</h:commandButton>
+						
+	
+					</div>
+			</div>
+		</div>
+		
+		<div class="botao-rodape">	
+			<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true"  styleClass="btn btn-default"  />			
+			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-dados-pessoais', 'div-endereco')}" value="Próximo" immediate="false"  
+							 styleClass="btn btn-default espaco-botao" type="submit" />
+		</div>
+		
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Renan Fight Team!</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition>
+		
+		<nav aria-label="breadcrumb" role="navigation">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-curent="page">Dados Pessoais</li>
+				<li class="breadcrumb-item active" aria-curent="page">Endereço</li>
+				<li class="breadcrumb-item active" aria-curent="page">Contato</li>
+				<li class="breadcrumb-item active" aria-curent="page">Matricula</li>
+			</ol>
+		</nav>
+		
+		<div >
+			<!-- Plano -->
+			<div class="form-group ">
+				<label for="cbx-plano">Plano</label> 
+				<h:selectOneMenu id="cbx-plano" value="#{alunoBean.planoContrato.planoSelecionado}" label="Plano" 
+				 				 styleClass="form-control campo-pesquisa"  converter="planoConverter">
+					<f:selectItems value="#{alunoBean.planoContrato.listaPlanos}" var="listaPlanos" itemLabel="#{listaPlanos.nomePlano}" itemValue="#{listaPlanos}" />
+				</h:selectOneMenu>	
+			</div>
+			
+			
+			<p:separator/>
+			
+			<!-- Modalidades Contratadas -->
+			<div class="form-check lista-check-box">
+				<label for="cbx-modalidades">Modalidades</label> 
+				<h:selectManyCheckbox id="cbx-modalidades" value="#{alunoBean.modalidadePraticada.modalidadesSelecionadas}" label="Modalidade" 
+									  styleClass="form-check label-cbx-modalidades" converter="modalidadeConverter"  
+									  layout="pageDirection">
+					<f:selectItems value="#{alunoBean.modalidadePraticada.listaModalidades}" var="modalidades" itemLabel="#{modalidades.nomeModalidade}"
+								   itemValue="#{modalidades}"/>
+				</h:selectManyCheckbox>	
+			</div>
+			
+			<p:separator/>
+			
+			<!-- Atestado Médico -->
+			<div class="form-check">
+				<label for="cbx-modalidades">Possui atestado Médico?</label> 
+				<h:selectBooleanCheckbox id="cbx-atestadoMedico" style="margin-left: 1%;" value="#{alunoBean.aluno.atestadoMedico}"/>	
+			</div>
+			
+			<div class="botao-rodape">	
+			<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true" styleClass="btn btn-default"/>
+			
+			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-matricula', 'div-contato')}" value="Anterior" immediate="true" 
+							 styleClass="btn btn-default espaco-botao"/>			
+			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-matricula', 'div-confirmar')}" value="Próximo" immediate="false" 
+							 styleClass="btn btn-default espaco-botao"/> 
+		</div>
+		</div>
+		
+		
+	</ui:composition>
+
+</h:body>
+
+</html>
