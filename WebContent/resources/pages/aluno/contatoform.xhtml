@@ -27,8 +27,9 @@
 			<div class="form-group ">
 					<label for="in-telefone">Telefone</label> 
 					<h:inputText id="in-telefone" styleClass="form-control is-valid" value="#{alunoBean.aluno.telefone}" 
-								 required="true" requiredMessage="Informar o telefone!"  style="width:300px;" maxlength="11"/>
-					<small id="telefoneHelp" class="form-text text-muted">Digite o telefone com dígito ex: (11)91234-1234.</small>								 
+								 required="true" requiredMessage="Informar o telefone!"  style="width:300px;" maxlength="15"
+								 onkeyup="mtel('in-telefone')" onkeypress="return event.keyCode != 13"/>
+					<small id="telefoneHelp" class="form-text text-muted">Digite o telefone com DDD ex: (11) 91234-1234.</small>								 
 			</div>
 			
 			
@@ -36,22 +37,24 @@
 			<div class="form-group ">
 					<label for="in-telefoneEmergencia">Telefone de Emergência</label> 
 					<h:inputText id="in-telefoneEmergencia" styleClass="form-control is-valid" value="#{alunoBean.aluno.telefoneDeEmergencia}" 
-								 required="true" requiredMessage="Informar o telefone do contato de emergência!"  style="width:300px;" maxlength="11"/>
-					<small id="telefoneEmgHelp" class="form-text text-muted">Digite o telefone com dígito ex: (11)91234-1234.</small>			 
+								 required="true" requiredMessage="Informar o telefone do contato de emergência!"  style="width:300px;" maxlength="15"
+								 onkeyup="mtel('in-telefoneEmergencia')" onkeypress="return event.keyCode != 13"/>
+					<small id="telefoneEmgHelp" class="form-text text-muted">Digite o telefone com DDD ex: (11)91234-1234.</small>			 
 			</div>
 			
 			<!-- Nome do contato de emergência-->
 			<div class="form-group ">
 					<label for="in-contatoDeEmergencia">Nome do Contato</label> 
 					<h:inputText id="in-contatoDeEmergencia" styleClass="form-control is-valid" value="#{alunoBean.aluno.contatoDeEmergencia}" 
-								 required="true" requiredMessage="Informar o nome do contato para emergência!"  style="width:300px;"/>
+								 required="true" requiredMessage="Informar o nome do contato para emergência!"  style="width:300px;"
+								 onkeypress="return event.keyCode != 13"/>
 			</div>
 			
 			<!-- Email -->
 			<div class="form-group ">
 					<label for="in-email">Email</label> 
 					<h:inputText id="in-email" styleClass="form-control is-valid" value="#{alunoBean.aluno.email}" 
-								 required="true" requiredMessage="Informar o email!"  style="width:300px;">
+								 required="true" requiredMessage="Informar o email!"  style="width:300px;" onkeypress="return event.keyCode != 13">
 						
 						<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
 					</h:inputText>

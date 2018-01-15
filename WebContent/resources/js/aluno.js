@@ -1,9 +1,6 @@
 /**
  * Função para mascara de data
  */
-
-
-
 function mascaraData(val) {
 	var pass = val.value;
 	var expr = /[0123456789]/;
@@ -82,3 +79,11 @@ function mascaraData(val) {
  * Função para mascara de RG
  */
 
+function mtel(id){	
+	var tel = document.getElementById(id).value;
+	tel = tel.replace(/\D/g, "");
+	tel = tel.replace(/^(\d{2})(\d)/g, "($1) $2");
+	tel = tel.replace(/(\d)(\d{4})$/, "$1-$2");
+	
+	document.getElementById(id).value = tel;
+}

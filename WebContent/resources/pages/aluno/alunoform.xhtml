@@ -48,8 +48,31 @@
 		
 		<!-- Confirmar -->
 		<h:panelGroup id="div-confirmar" binding="#{alunoBean.propriedades.painelConfirmar}" rendered="false" styleClass="confirmar">
+		
 			<h:form prependId="false">
 				<ui:include src="/resources/pages/aluno/confirmarform.xhtml" />
+				
+				<div class="botao-rodape">	
+					<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true" styleClass="btn btn-default"/>
+					
+					<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-confirmar', 'div-matricula')}" value="Anterior" immediate="true" 
+									 styleClass="btn btn-default espaco-botao"/>	
+									 
+					<p:commandButton value="Confirmar" global="true" styleClass="btn btn-default espaco-botao" style="padding: 1px 1px;">
+        				<p:confirm header="Confirmar" message="Deseja Cadastrar Aluno?" icon="ui-icon-alert" />
+    				</p:commandButton>
+ 
+				    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >				    	
+				        <p:commandButton value="Sim" type="button" id="btnHome" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="PF('dlg').show();"/>
+				        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				    </p:confirmDialog>
+				    
+				    <p:dialog header="Confirmação" widgetVar="dlg" dynamic="true" closable="false" resizable="false">
+				   		<h:outputLabel value="Aluno cadastrado com sucesso!" />
+				   		<br />
+				   		<h:commandButton action="#{menuBean.paginaHome()}" value="Ok" styleClass="btn btn-default" style="margin-top: 20px; margin-left: 42%;" />
+					</p:dialog>
+				</div>
 			</h:form>	
 		</h:panelGroup>
 		

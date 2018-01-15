@@ -3,11 +3,14 @@ package br.com.renanFightTeam.util.ws;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.LogRecord;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonValue;
 
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;

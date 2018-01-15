@@ -18,6 +18,10 @@
     border-top: 1px solid #ccc;
 }
 
+.foto-content-confirmar{
+	margin-right: 15px;
+}
+
 .lista-check-box table{
 	margin-left: 3%;
 	width: 20%;
@@ -74,4 +78,9 @@
 .modalidade-dt div{
 	overflow: auto;
 	height: 50px;
+}
+
+.btn-dialog input{
+	margin-top: 20px;
+	margin-left: 65%;
 }

@@ -24,7 +24,9 @@
 	
 	<!-- Area de dados pessoais-->
 		<h4>Dados Pessoais</h4>
-		<div class="form-group" >						
+		
+		<div class="form-group" >
+								
 			<div class="aluno-content mrg-left-3pc">
 				
 				<!-- Nome do aluno -->
@@ -65,13 +67,13 @@
 				
 			<div id="div-foto-confirmar" class="foto" style="margin-right: -10px;margin-top: -35px;">
 				<!-- Area de apresentação da foto -->
-				<div id="div-foto-content-confirmar" >
-					<h:graphicImage value="/resources/imagens/IMG-20170704-WA0022.jpg" class="foto-content" />
+				<div id="div-foto-content-confirmar" style="margin-right: 15px;">
+					<h:graphicImage value="#{alunoBean.fotoAluno.fotoPath}" class="foto-content" />
 				</div>								
 			</div>
 				
 		</div>
-		
+				
 		<p:separator/>
 		
 		<h4>Endereço</h4>
@@ -187,20 +189,7 @@
 			</div>
 		</div>
 		
-		<p:separator/>		
-		
-		<div class="botao-rodape">	
-			<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true" styleClass="btn btn-default"/>
-			
-			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-confirmar', 'div-matricula')}" value="Anterior" immediate="true" 
-							 styleClass="btn btn-default espaco-botao"/>	
-						
-			<h:commandButton action="#{menuBean.paginaHome()}" value="Confirmar" immediate="true" styleClass="btn btn-default espaco-botao"/>
-			
-		</div>
-				
-				
-		
+		<p:separator/>	
 		
 	</ui:composition>
 

@@ -14,18 +14,15 @@
 	<ui:composition template="/resources/template/_template.xhtml">
 		
 		<ui:define name="corpo">
+
+			<div class="subtitulo">
+				<h2>Incluir Aluno</h2>
+			</div>
 			
-<!-- 			<h:form prependId="false" id="form-aluno-incluir" > -->
-				<div class="subtitulo">
-					<h2>Incluir Aluno</h2>
-				</div>
-				
-				<div class="aluno-form borda-padrao">
-					<ui:include src="/resources/pages/aluno/alunoform.xhtml"/>
-				</div>
-				
-<!-- 			</h:form>						 -->
-			
+			<div class="aluno-form borda-padrao">
+				<ui:include src="/resources/pages/aluno/alunoform.xhtml"/>
+			</div>
+						
 		</ui:define>
 	
 	</ui:composition>

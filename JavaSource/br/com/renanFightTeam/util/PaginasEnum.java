@@ -15,7 +15,13 @@ public enum PaginasEnum {
 	MODALIDADEINCLUIR("/resources/pages/modalidade/modalidadeincluir", "/resources/pages/modalidade/modalidadeincluir.xhtml", "modalidadeincluir.xhtml"),
 	MODALIDADEALTERAR("/resources/pages/modalidade/modalidadealterar", "/resources/pages/modalidade/modalidadealterar.xhtml", "modalidadealterar.xhtml"),
 	MODALIDADECONSULTAR("/resources/pages/modalidade/modalidadeconsultar", "/resources/pages/modalidade/modalidadeconsultar.xhtml", "modalidadeconsultar.xhtml"),
-	MODALIDADEEXCLUIR("/resources/pages/modalidade/modalidadeexcluir", "/resources/pages/modalidade/modalidadeexcluir.xhtml", "modalidadeexcluir.xhtml");
+	MODALIDADEEXCLUIR("/resources/pages/modalidade/modalidadeexcluir", "/resources/pages/modalidade/modalidadeexcluir.xhtml", "modalidadeexcluir.xhtml"),
+	
+	/*
+	 * ALUNO
+	 */
+	
+	ALUNOINCLUIR("/resources/pages/aluno/alunoincluir","/resources/pages/aluno/alunoincluir.xhtml","alunoincluir.xhtml");
 	
 	private final String diretorio;
 	private final String diretorioCompleto;

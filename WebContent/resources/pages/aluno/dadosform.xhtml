@@ -29,16 +29,19 @@
 					<label for="in-nome-aluno">Nome</label> 
 					<h:inputText id="in-nome-aluno" styleClass="form-control is-valid" value="#{alunoBean.aluno.nome}" 
 								 required="true" requiredMessage="Informar o nome do aluno!" style="width:300px;"
-								 onkeypress="return event.keyCode != 13"/>
+								 onkeypress="return event.keyCode != 13">
+								 
+					 	<f:passThroughAttribute name="placeholder" value="Nome completo"/>
+					</h:inputText> 
+								 
 				</div>
 				
 				<!-- Data de nascimento do aluno -->
 				<div class="form-group">
 					<label for="in-data-de-nascimento-aluno">Data de Nascimento</label> 
-					<h:inputText id="in-data-de-nascimento-aluno" styleClass="form-control is-valid" value="#{alunoBean.aluno.dataDeNascimento.time}" style="width:100px;"
-								 onkeypress="if(event.keyCode == 13) return false;else mascaraData(this)" maxlength="10" requiredMessage="Informar Data de Nascimento do aluno!" >
-								 
-						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+					<h:inputText id="in-data-de-nascimento-aluno" styleClass="form-control is-valid" value="#{alunoBean.dataDeNascimentoHtlm5}" style="width:170px;"
+								 onkeypress="if(event.keyCode == 13) return false" maxlength="10" requiredMessage="Informar Data de Nascimento do aluno!" >
+							<f:passThroughAttribute name="type" value="date"/>
 					</h:inputText>
 				</div>
 				
@@ -46,7 +49,8 @@
 				<div class="form-group ">
 						<label for="in-rg">RG</label> 
 						<h:inputText id="in-rg" styleClass="form-control is-valid" value="#{alunoBean.aluno.rg}" 
-									 required="true" requiredMessage="Informar o RG do aluno!" style="width:300px;" maxlength="9" onkeypress="return event.keyCode != 13"/>
+									 required="true" requiredMessage="Informar o RG do aluno!" style="width:300px;" maxlength="9" onkeypress="return event.keyCode != 13"
+									 validator="#{alunoBean.validarAluno.validarRG}" />
 						<small id="rgHelp" class="form-text text-muted">Digite apenas números.</small>
 				</div>
 			
@@ -75,28 +79,28 @@
 			<div id="div-foto" class="foto">
 				<!-- Area de apresentação da foto -->
 				<div id="div-foto-content" >
-					<h:graphicImage id="img-foto" value="/resources/imagens/IMG-20170704-WA0022.jpg" class="foto-content" />
+					<h:graphicImage id="img-foto" value="#{alunoBean.fotoAluno.fotoPath}" class="foto-content" />
 				</div>
 				
 				<!-- Area do botão de seleção da foto no sistema -->
-				
+
 					<div class="botao-rodape" style="margin-top: 5%">
 						
-							<h:inputFile value="#{alunoBean.fotoAluno.arquivo}"  validator="#{alunoBean.fotoAluno.valida}" immediate="false" size="20"/>
-												
-							<h:commandButton id="btn-importar" action="#{alunoBean.fotoAluno.importarArquivo}" value="Importar">
-								<f:ajax execute="btn-importar" render="@form"></f:ajax>
-							</h:commandButton>
-						
+						<h:inputFile id="if-foto" value="#{alunoBean.fotoAluno.arquivo}"  validator="#{alunoBean.fotoAluno.valida}" size="20"/>
+											
+						<h:commandButton id="btn-importar" action="#{alunoBean.fotoAluno.importarArquivo}" value="Importar" immediate="false" type="button">
+							<f:ajax execute="btn-importar if-foto img-foto" render="@all"/>
+						</h:commandButton>						
 	
 					</div>
 			</div>
-		</div>
+		</div>		
 		
 		<div class="botao-rodape">	
 			<h:commandButton action="#{menuBean.paginaHome()}" value="Cancelar" immediate="true"  styleClass="btn btn-default"  />			
-			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-dados-pessoais', 'div-endereco')}" value="Próximo" immediate="false"  
-							 styleClass="btn btn-default espaco-botao" type="submit" />
+			<h:commandButton action="#{alunoBean.propriedades.validarFluxoPagina('div-dados-pessoais', 'div-endereco')}" value="Próximo" immediate="false" type="submit" 
+								 styleClass="btn btn-default espaco-botao">	 
+			</h:commandButton>					  
 		</div>
 		
 	</ui:composition>

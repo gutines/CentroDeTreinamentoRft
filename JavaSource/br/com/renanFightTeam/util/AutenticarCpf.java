@@ -13,8 +13,7 @@ public class AutenticarCpf {
 		
 		String cpfSemFormatacao = retirarFormatacaoCpf(cpf);
 				
-		if(validarTamanhoCpf(cpfSemFormatacao) && validarCpfSequenciaIgual(cpfSemFormatacao) &&
-				validarDigito(cpfSemFormatacao)){
+		if(validarTamanhoCpf(cpfSemFormatacao) && validarCpfSequenciaIgual(cpfSemFormatacao) && validarDigito(cpfSemFormatacao)){
 			return true;
 		}
 		return false;
